@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'signup_page.dart';
 
@@ -10,7 +12,7 @@ class MyDashboardPageWidget extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.grey,
-        title: Text('JAILTRACK'),
+        title: const Text('JAILTRACK'),
         actions: [
           TextButton(
             onPressed: () {
@@ -20,7 +22,7 @@ class MyDashboardPageWidget extends StatelessWidget {
                     builder: (context) => const MySignupPageWidget()),
               );
             },
-            child: Text(
+            child: const Text(
               'Sign Up',
               style: TextStyle(color: Colors.black),
             ),
@@ -33,15 +35,50 @@ class MyDashboardPageWidget extends StatelessWidget {
                     builder: (context) => const MyDashboardPageWidget()),
               );
             },
-            child: Text('Login', style: TextStyle(color: Colors.black),),
+            child: const Text('Login', style: TextStyle(color: Colors.black),),
           ),
         ],
       ),
       body: SafeArea(
-        child: Row(
-          children: [
-            // Add your dashboard widgets here
-          ],
+        child: Center(
+          child: SizedBox(
+            width: 400.0, // Adjust width as needed
+            child: Container(
+              padding: const EdgeInsets.all(20.0),
+              decoration: BoxDecoration(
+                color: Colors.grey[900],
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Username',
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 40.0),
+                  const TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                    style: TextStyle(color: Colors.white),
+                    obscureText: true,
+                  ),
+                  const SizedBox(height: 30.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add login functionality here
+                    },
+                    child: const Text('Login'),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -62,7 +99,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 0, 0, 0)),
+            ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 0, 0)),
         useMaterial3: true,
       ),
       home: const MyDashboardPageWidget(),
