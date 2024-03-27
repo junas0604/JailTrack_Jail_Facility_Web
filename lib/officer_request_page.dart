@@ -48,7 +48,7 @@ class MyOfficerRequestPageWidget extends StatelessWidget {
               onTap: () {
                 // Navigate to Dashboard page
                 Navigator.pop(context); // Close the drawer
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyMainDashboardPageWidget()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MyMainDashboardPageWidget()));
               },
             ),
             ListTile(
@@ -56,11 +56,11 @@ class MyOfficerRequestPageWidget extends StatelessWidget {
               onTap: () {
                 // Navigate to Notification page
                 Navigator.pop(context); // Close the drawer
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyMainDashboardPageWidget()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MyMainDashboardPageWidget()));
               },
             ),
             ListTile(
-              title: Text('Scheduling System'),
+              title: const Text('Scheduling System'),
               onTap: () {
                 // Navigate to Scheduling System page
                 Navigator.pop(context); // Close the drawer
