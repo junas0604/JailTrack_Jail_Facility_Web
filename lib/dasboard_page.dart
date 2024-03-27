@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'signup_page.dart';
 
@@ -9,7 +8,7 @@ class MyDashboardPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+     backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.grey,
         title: const Text('JAILTRACK'),
@@ -39,70 +38,72 @@ class MyDashboardPageWidget extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Center(
-          child: SizedBox(
-            width: 400.0, // Adjust width as needed
+      body: Stack(
+        children: [
+          // Background image with opacity
+          ColorFiltered(
+            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.35), BlendMode.dstATop),
             child: Container(
-              padding: const EdgeInsets.all(20.0),
               decoration: BoxDecoration(
-                color: Colors.grey[900],
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Username',
-                      hintStyle: TextStyle(color: Colors.grey),
-                    ),
-                    style: TextStyle(color: Colors.white),
+                image: DecorationImage(
+                  image: NetworkImage(
+                    'https://i0.wp.com/governmentph.com/wp-content/uploads/2018/09/How-to-Apply-to-BJMP-Process.png?fit=1200%2C628&ssl=1',
                   ),
-                  const SizedBox(height: 40.0),
-                  const TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Password',
-                      hintStyle: TextStyle(color: Colors.grey),
-                    ),
-                    style: TextStyle(color: Colors.white),
-                    obscureText: true,
-                  ),
-                  const SizedBox(height: 30.0),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Add login functionality here
-                    },
-                    child: const Text('Login'),
-                  ),
-                ],
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-        ),
+          SafeArea( // Wrap SafeArea around content
+            child: Center(
+              child: SizedBox(
+                width: 400.0, // Adjust width as needed
+                child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[900],
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Username',
+                          hintStyle: TextStyle(color: Colors.white),
+                        ),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 40.0),
+                      const TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Password',
+                          hintStyle: TextStyle(color: Colors.white),
+                        ),
+                        style: TextStyle(color: Colors.white),
+                        obscureText: true,
+                      ),
+                      const SizedBox(height: 30.0),
+                      ElevatedButton(
+                        onPressed: () {
+                          // Add login functionality here
+                        },
+                        child: const Text('Login'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 0, 0)),
-        useMaterial3: true,
-      ),
-      home: const MyDashboardPageWidget(),
-    );
-  }
+  runApp(const MaterialApp(
+     home: MyDashboardPageWidget(),
+  ));
 }
